@@ -2,6 +2,8 @@
 import dask.dataframe as dd
 import pandas as pd
 
+from .paraderos import cargar_diccionario
+
 from .config import (
     TELEFONIA_DIR,
     MIN_PINGS_DIA,
@@ -58,4 +60,11 @@ def procesar_cdr(path=None):
     df = filtrar_dias_buenos(df)
     print(f"  Tras filtro días   : {df['hashed_imsi_CENIA'].nunique():,} usuarios, {len(df):,} registros")
 
+    return df
+
+def enriquecer_trayectoria(df):
+    # Agrega columnas de latitud y longitud de subida y bajada usando el diccionario de paraderos
+    paraderos = cargar_diccionario().set_index("paradero")
+    df = df.merge(paraderos[["lat", "lon"]].rename(columns={"lat": "lat_subida", "lon": "lon_subida"}), left_on="paradero_subida_1", right_index=True, how="left")
+    df = df.merge(paraderos[["lat", "lon"]].rename(columns={"lat": "lat_bajada", "lon": "lon_bajada"}), left_on="paradero_bajada_1", right_index=True, how="left")
     return df

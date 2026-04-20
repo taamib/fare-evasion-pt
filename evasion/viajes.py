@@ -1,7 +1,6 @@
 # Procesamiento de archivos de viajes
 # convertir de CSV.gz a Parquet, agregar coordenadas, y cargar como Dask DataFrame
 
-import unicodedata
 import glob
 import os
 
@@ -9,15 +8,7 @@ import pandas as pd
 import dask.dataframe as dd
 
 from .config import VIAJES_DIR, VIAJES_PARQUET_DIR, COLUMNAS_VIAJES_ELIMINAR
-from .paraderos import cargar_diccionario
-
-
-def normalizar(texto):
-    if pd.isna(texto):
-        return texto
-    texto = str(texto).upper().strip()
-    texto = unicodedata.normalize("NFD", texto)
-    return "".join(c for c in texto if unicodedata.category(c) != "Mn")
+from .paraderos import cargar_diccionario, normalizar
 
 # Convierte los archivos de viajes de CSV.gz a Parquet, agregando coordenadas de paraderos 
 def convertir_gz_a_parquet(viajes_dir=None, parquet_dir=None):
