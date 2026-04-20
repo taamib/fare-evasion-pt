@@ -1,0 +1,7 @@
+dask[dataframe]
+pandas
+pyarrow
+pyproj
+folium
+scikit-learn
+openpyxl
