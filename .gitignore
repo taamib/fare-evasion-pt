@@ -1,0 +1,14 @@
+data/
+outputs/
+*.parquet
+*.gz
+*.xlsx
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+build_caracterizacion.py
+build_resumen.py
+propuesta_ajustada.md
+figuras/
+.vscode/
+.venv/
