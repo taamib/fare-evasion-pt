@@ -1,0 +1,7 @@
+mundo,criterio,mitad,radio_m,ventana_min,min_dias,exceso,f1
+sintetico,exceso sobre el azar,,500,10,2,178.60000000000002,
+sintetico,F1 contra la verdad,,500,10,2,,0.1105990783410138
+semisintetico,exceso sobre el azar,,600,1,2,1127.0,
+semisintetico,F1 contra la verdad,,200,1,2,,0.7320943307824458
+caso,exceso sobre el azar,1,200,5,3,134.20000000000005,
+caso,exceso sobre el azar,2,300,5,3,166.20000000000005,
